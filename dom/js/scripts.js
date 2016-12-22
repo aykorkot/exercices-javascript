@@ -6,28 +6,36 @@ window.onload = function (){
 
 };
 
-/*
-window.onbeforeunload = closeIt;
 
-//Fonction appelé au moment de fermer la page
-function closeIt()
-{
-alert("Ferme");
+window.onbeforeunload = function (event) {
+    return "alert";
+};
 
-}
-*/
 
-// changer la couleur du body 
+// alerte en cliquant sur une touche
+window.onkeydown = function(event) {
+   if (event.keyCode === 81) {
+      alert("This is a test.");
+   }
+};
+
+// change color body onclick
 function changeColor()
-
 {
 	document.body.style.backgroundColor="red"
+	document.getElementById("changeBackground").style.opacity = "0.5";
 }
 
+// retourner la couleur du body 
+function retournWhite()
+{
+	document.body.style.backgroundColor="white"
+	document.getElementById("changeBackground").style.opacity = "";
+}
 
 // change image on hover
 function changeimage(imag1)
-
 {
 	document.image1.src = imag1
 }
+
