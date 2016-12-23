@@ -7,16 +7,11 @@ window.onload = function (){
 };
 
 
-window.onbeforeunload = function (event) {
-    return "alert";
-};
-
-
 // alerte en cliquant sur une touche
-window.onkeydown = function(event) {
-   if (event.keyCode === 81) {
+window.onkeyup = function(event) {
+ 
       alert("This is a test.");
-   }
+
 };
 
 // change color body onclick
