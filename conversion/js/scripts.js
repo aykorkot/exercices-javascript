@@ -1,6 +1,6 @@
-
+/*
 // SOLUTION AVEC SWITCH
-/*var tauxConv = 10.6290;
+var tauxConv = 10.6290;
 var status = 0;
 
     // fonction qui convertie la monnaie  
@@ -39,7 +39,6 @@ var status = 0;
       
       }
 
-      
     return false;
   }
 
@@ -49,19 +48,28 @@ var status = 0;
 
 
 // SOLUTION AVEC ARRAY
-document.getElementById("de").onchange = function () {
+/*document.getElementById("de").onchange = function () {
 
+  calculeMontant();
+}
+document.getElementById("en").onchange = function () {
+
+    calculeMontant();
+}
+
+
+function calculeMontant(){
   // Tableau des devises;
   var devise = new Array();
-  devise["madToEur"] = 0,0942933;
-  devise["eurToMad"] = 10.6290;
+  devise["madToeur"] = 0,0942933;
+  devise["eurTomad"] = 10.6290;
 
-  devise["usdToMad"] = 10.1752172;
-  devise["madToUsd"] = 0,09816;
+  devise["usdTomad"] = 10.1752172;
+  devise["madTousd"] = 0,09816;
 
-  devise["eurToUsd"] = 1.04525;
-  devise["usdToEur"] = 0.956708921;
-  
+  devise["eurTousd"] = 1.04525;
+  devise["usdToeur"] = 0.956708921;
+  console.log(devise);
 
   var montant = document.getElementById("montant").value;
 
@@ -70,10 +78,16 @@ document.getElementById("de").onchange = function () {
 
   var select2 = document.getElementById("en");
   var selectDev2 = select2.options[select2.selectedIndex].value;
+  console.log(montant);
+  console.log(selectDev1);
+  console.log(selectDev2);
   
+  if(selectDev1 !== selectDev2){
+    montant = montant * devise[selectDev1 + "To" + selectDev2];
+  }*/
   
-  if( (selectDev1 == "mad") && (selectDev2 == "eur") ){
-    montant = montant * devise[madToEur];
+/*  if( (selectDev1 == "mad") && (selectDev2 == "eur") ){
+    montant = montant * devise["madToEur"];
     
   }
   else if ( (selectDev1 == "mad") && (selectDev2 == "usd") ){
@@ -96,9 +110,33 @@ document.getElementById("de").onchange = function () {
     montant = montant * devise["usdToEur"];
   
   }
-  
-document.getElementById("resultat").innerHTML = montant;
+  */
+/*document.getElementById("resultat").innerHTML = montant;
 
 
   event.preventDefault();
+}
+*/
+
+
+//solution avec 1 seul select
+document.getElementById("selectDevise").onchange = function () {
+
+
+  var montant = document.getElementById("montant").value;
+
+  var taux = document.getElementById("selectDevise").value;
+
+  document.getElementById("resultat").innerHTML = montant*taux ;
+
+}
+document.getElementById("montant").onkeyup = function () {
+
+
+  var montant = document.getElementById("montant").value;
+
+  var taux = document.getElementById("selectDevise").value;
+
+  document.getElementById("resultat").innerHTML = montant*taux ;
+
 }
