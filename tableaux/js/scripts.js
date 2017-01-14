@@ -26,6 +26,7 @@ document.getElementById('ajouter').onclick = function () {
 		row += "</td>";
 	row += "</tr>";
 
+
 	index++;
  
 							 
@@ -46,30 +47,34 @@ function supprimer(param_index) {
 
 function modifier(param_index) {
 
+	document.getElementById("btns").innerHTML = "<button type='button' id='update' class='btn btn-danger btn-md' style='width:20%' onclick='update(" + index + ");'>Update</buttons"; 
+
 	var monTr = document.getElementById("montr_" + param_index);
 
 	var tdNom = monTr.getElementsByTagName("td")[0].innerHTML;
 	var tdPrenom = monTr.getElementsByTagName("td")[1].innerHTML;
+	
 
-	document.getElementById("update").style.display="block";
 	document.getElementById("ajouter").style.display="none";
 	
 	document.getElementById("nom").value = tdNom;
-	document.getElementById("prenom").value = tdPrenom;
+	document.getElementById("prenom").value = tdPrenom
+
+	document.getElementById("indexLigne").value=param_index;
+
 
 }	
 
-document.getElementById('update').onclick = function (param_index) {
+
+function update(param_index) {
+
+	var key = document.getElementById("indexLigne").value;
 
 	document.getElementById("ajouter").style.display="block";
 	document.getElementById("update").style.display="none";
 
+	var monTr = document.getElementById("montr_" + key);
 
-	var monTr = document.getElementById("montr_" + param_index);
-
-	document.getElementById("indexLigne").value=monTr;
-
-	console.log(monTr);
 	var nom = document.getElementById('nom').value;
 	var prenom = document.getElementById('prenom').value;
 
